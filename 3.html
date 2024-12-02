@@ -3,46 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MBTI Test</title>
-<style>
-  body { font-family: Arial, sans-serif; }
-  .container { width: 80%; margin: 0 auto; text-align: center; }
-  .question { margin: 20px 0; }
-  .result { margin-top: 50px; }
-</style>
-</head>
-<body>
-<div class="container">
-  <h1>MBTI Personality Test</h1>
-  <div class="question" id="q1">
-    <p>Are you more of an Introvert (I) or Extrovert (E)?</p>
-    <button onclick="selectOption('i')">I</button>
-    <button onclick="selectOption('e')">E</button>
-  </div>
-  <div class="question" id="q2">
-    <p>Do you prefer Intuition (N) or Sensing (S)?</p>
-    <button onclick="selectOption('n')">N</button>
-    <button onclick="selectOption('s')">S</button>
-  </div>
-  <div class="question" id="q3">
-    <p>Do you make decisions with Thinking (T) or Feeling (F)?</p>
-    <button onclick="selectOption('t')">T</button>
-    <button onclick="selectOption('f')">F</button>
-  </div>
-  <div class="question" id="q4">
-    <p>Do you prefer Perceiving (P) or Judging (J)?</p>
-    <button onclick="selectOption('p')">P</button>
-    <button onclick="selectOption('j')">J</button>
-  </div>
-  <button onclick="submitTest()">Submit</button>
-  <div class="result" id="result"></div>
-</div>
-
+<title>MBTI Personality Test</title>
 <script>
-  const questions = document.querySelectorAll('.question');
-  let answers = [];
+function calculateMBTI() {
+    var questions = [
+        {question: "Do you prefer to...", options: ["Stay in on a Friday night.", "Go out with friends."], index: "E"},
+        {question: "When it comes to planning...", options: ["I like to be flexible.", "I like to have a plan."], index: "J"},
+        // Add more questions here
+    ];
 
-  function selectOption(option) {
-    const currentQuestion = questions[questions.length - 1].id.charAt(1);
-    answers.push(option);
-    questions[questions.length - 1].style.display 
+    var results = {
+        E: 0,
+        I: 0,
+        S: 0,
+        N: 0,
+        T: 0,
+        F: 0,
+        J: 0,
+        P: 0
+    };
+
+    var selectedAnswers = document.querySelectorAll('input[name="question"]:checked');
+    selectedAnswers.forEach(function(answer) {
+        var question = questions.find(function(q) {
+            return q.question === answer.parentElement.parentElement.innerText;
+        });
+        if (question) {
+            results[question.index]++;
+        }
+    });
+
+    var mbtiType = determineType(results);
+    displayResults(mbtiType);
+}
+
+function determineType(results) {
+    // Determine the MBTI type based on the results
+    // This is a simplified version and doesn't represent the full complexity of MBTI
+    var type = "";
+    if (results.E > results.I) type += "E";
+    else type += "I";
+    if (results.J > results.P) type += "J";
+    else type += "P";
+    // Add logic for the other dichotomies
+    return type;
+}
+
+function displayResults(type) {
+    var analysis = "";
+    // Add analysis based on the type
+    switch(type) {
+        case "EJ":
