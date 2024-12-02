@@ -1,29 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Display Text</title>
-<script>
-function displayText() {
-    var textBox = document.getElementById("textToDisplay");
-    var displayArea = document.getElementById("displayArea");
-    displayArea.textContent = textBox.value;
-}
-</script>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
 </head>
 <body>
-
-<h2>Enter Text and Click Button to Display</h2>
-
-<!-- 文本框 -->
-<input type="text" id="textToDisplay" placeholder="Enter text here">
-
-<!-- 按钮 -->
-<button onclick="displayText()">Display Text</button>
-
-<!-- 显示区域 -->
-<div id="displayArea"></div>
-
+    <input id="shower"><br/>
+    <button id="num7">7</button>
+    <button id="num8">8</button>
+    <button id="num9">9</button>
+    <button id="divide" onclick="setOperator('/')">÷</button><br/>
+    <button id="num4">4</button>
+    <button id="num5">5</button>
+    <button id="num6">6</button>
+    <button id="multiple" onclick="setOperator('*')">x</button><br/>
+    <button id="num1">1</button>
+    <button id="num2">2</button>
+    <button id="num3">3</button>
+    <button id="minus" onclick="setOperator('-')">-</button><br/>
+    <button id="num0">0</button>
+    <button id="cal" onclick="calculate()">=</button>
+    <button id="add" onclick="setOperator('+')">+</button>
 </body>
+<script>
+    var operand1 = 0;
+    var operand2 = 0;
+    var operator = "";
+    var shower = document.getElementById("shower");
+
+    function click_num(event){
+        var num = event.target.id.replace("num", "");
+        shower.value = shower.value + num;
+    }
+
+    function setOperator(op){
+        operand1 = parseFloat(shower.value);
+        operator = op;
+        shower.value = "";
+    }
+
+    function calculate(){
+        operand2 = parseFloat(shower.value);
+        if (isNaN(operand1) || isNaN(operand2)) return;
+        var result;
+        switch(operator){
+            case "+":
+                result = operand1 + operand2;
+                break;
+            case "-":
+                result = operand1 - operand2;
+                break;
+            case "*":
+                result = operand1 * operand2;
+                break;
+            case "/":
+                if(operand2 == 0) {
+                    alert("Cannot divide by zero");
+                    return;
+                }
+                result = operand1 / operand2;
+                break;
+        }
+        shower.value = result;
+        operand1 = result; // Prepare for next operation
+        operator = ""; // Reset operator
+    }
+
+    // Attach event listeners to number buttons
+    document.getElementById("num0").addEventListener("click", click_num);
+    document.getElementById("num1").addEventListener("click", click_num);
+    document.getElementById("num2").addEventListener("click", click_num);
+    document.getElementById("num3").addEventListener("click", click_num);
+    document.getElementById("num4").addEventListener("click", click_num);
+    document.getElementById("num5").addEventListener("click", click_num);
+    document.getElementById("num6").addEventListener("click", click_num);
+    document.getElementById("num7").addEventListener("click", click_num);
+    document.getElementById("num8").addEventListener("click", click_num);
+    document.getElementById("num9").addEventListener("click", click_num);
+</script>
 </html>
