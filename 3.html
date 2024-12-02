@@ -3,71 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MBTI Personality Test</title>
+<title>Display Text</title>
 <script>
-// 假设我们只考虑两个维度：E-I 和 T-F
-function calculateMBTI() {
-    var extraversion = document.querySelector('input[name="extraversion"]:checked') ? 1 : 0;
-    var thinking = document.querySelector('input[name="thinking"]:checked') ? 1 : 0;
-
-    // 根据选择计算MBTI类型
-    var mbtiType = "";
-    if (extraversion === 1) {
-        mbtiType += "E";
-    } else {
-        mbtiType += "I";
-    }
-    if (thinking === 1) {
-        mbtiType += "T";
-    } else {
-        mbtiType += "F";
-    }
-
-    // 显示结果
-    displayResults(mbtiType);
-}
-
-function displayResults(type) {
-    var resultElement = document.getElementById("result");
-    resultElement.innerHTML = "Your MBTI type is: " + type + "<br><br>";
-
-    // 根据MBTI类型显示性格分析
-    switch(type) {
-        case "ET":
-            resultElement.innerHTML += "You are an Extraverted Thinking type. You are action-oriented, logical, and decisive.";
-            break;
-        case "EF":
-            resultElement.innerHTML += "You are an Extraverted Feeling type. You are warm, empathetic, and people-oriented.";
-            break;
-        case "IT":
-            resultElement.innerHTML += "You are an Introverted Thinking type. You are strategic, analytical, and focused.";
-            break;
-        case "IF":
-            resultElement.innerHTML += "You are an Introverted Feeling type. You are compassionate, intuitive, and sensitive.";
-            break;
-        default:
-            resultElement.innerHTML += "Your personality type is not determined.";
-    }
+function displayText() {
+    var textBox = document.getElementById("textToDisplay");
+    var displayArea = document.getElementById("displayArea");
+    displayArea.textContent = textBox.value;
 }
 </script>
 </head>
 <body>
 
-<h2>MBTI Personality Test</h2>
+<h2>Enter Text and Click Button to Display</h2>
 
-<form id="mbtiForm">
-    <p>Do you prefer to:</p>
-    <label><input type="radio" name="extraversion" value="E"> Be the life of the party.</label><br>
-    <label><input type="radio" name="extraversion" value="I"> Have deep conversations.</label><br><br>
+<!-- 文本框 -->
+<input type="text" id="textToDisplay" placeholder="Enter text here">
 
-    <p>In decision making, do you:</p>
-    <label><input type="radio" name="thinking" value="T"> Rely on logic and objective analysis.</label><br>
-    <label><input type="radio" name="thinking" value="F"> Consider the impact on others.</label><br><br>
+<!-- 按钮 -->
+<button onclick="displayText()">Display Text</button>
 
-    <button type="button" onclick="calculateMBTI()">Submit</button>
-</form>
-
-<div id="result"></div>
+<!-- 显示区域 -->
+<div id="displayArea"></div>
 
 </body>
 </html>
