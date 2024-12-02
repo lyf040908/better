@@ -4,61 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MBTI Test</title>
-<script>
-function calculateMBTI() {
-    var iOrE = document.getElementById("iOrE").value;
-    var pOrJ = document.getElementById("pOrJ").value;
-    var sOrN = document.getElementById("sOrN").value;
-    var tOrF = document.getElementById("tOrF").value;
-
-    var mbtiType = iOrE + pOrJ + sOrN + tOrF;
-    var mbtiDescription = "";
-
-    // Simple MBTI description based on the type
-    switch (mbtiType) {
-        case "INTJ":
-            mbtiDescription = "The Scientist: Independent, original, and analytical.";
-            break;
-        case "INTP":
-            mbtiDescription = "The Thinker: Logical, analytical, and innovative.";
-            break;
-        case "ENTJ":
-            mbtiDescription = "The Director: Decisive, leadership, and assertive.";
-            break;
-        case "ENTP":
-            mbtiDescription = "The Visionary: Creative, innovative, and flexible.";
-            break;
-        // Add more cases for other types...
-        default:
-            mbtiDescription = "Unknown MBTI type.";
-    }
-
-    document.getElementById("result").innerHTML = "You are an " + mbtiType + " type: " + mbtiDescription;
-}
-</script>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .container { width: 80%; margin: 0 auto; text-align: center; }
+  .question { margin: 20px 0; }
+  .result { margin-top: 50px; }
+</style>
 </head>
 <body>
-<h1>MBTI Test</h1>
-<form onsubmit="calculateMBTI(); return false;">
-    <p>Are you more of an I (Introverted) or E (Extraverted) person?</p>
-    <input type="radio" id="iOrE" name="iOrE" value="I">I<br>
-    <input type="radio" id="iOrE" name="iOrE" value="E">E<br>
+<div class="container">
+  <h1>MBTI Personality Test</h1>
+  <div class="question" id="q1">
+    <p>Are you more of an Introvert (I) or Extrovert (E)?</p>
+    <button onclick="selectOption('i')">I</button>
+    <button onclick="selectOption('e')">E</button>
+  </div>
+  <div class="question" id="q2">
+    <p>Do you prefer Intuition (N) or Sensing (S)?</p>
+    <button onclick="selectOption('n')">N</button>
+    <button onclick="selectOption('s')">S</button>
+  </div>
+  <div class="question" id="q3">
+    <p>Do you make decisions with Thinking (T) or Feeling (F)?</p>
+    <button onclick="selectOption('t')">T</button>
+    <button onclick="selectOption('f')">F</button>
+  </div>
+  <div class="question" id="q4">
+    <p>Do you prefer Perceiving (P) or Judging (J)?</p>
+    <button onclick="selectOption('p')">P</button>
+    <button onclick="selectOption('j')">J</button>
+  </div>
+  <button onclick="submitTest()">Submit</button>
+  <div class="result" id="result"></div>
+</div>
 
-    <p>Do you prefer P (Perceiving) or J (Judging)?</p>
-    <input type="radio" id="pOrJ" name="pOrJ" value="P">P<br>
-    <input type="radio" id="pOrJ" name="pOrJ" value="J">J<br>
+<script>
+  const questions = document.querySelectorAll('.question');
+  let answers = [];
 
-    <p>Are you more S (Sensing) or N (Intuitive)?</p>
-    <input type="radio" id="sOrN" name="sOrN" value="S">S<br>
-    <input type="radio" id="sOrN" name="sOrN" value="N">N<br>
-
-    <p>Do you identify more with T (Thinking) or F (Feeling)?</p>
-    <input type="radio" id="tOrF" name="tOrF" value="T">T<br>
-    <input type="radio" id="tOrF" name="tOrF" value="F">F<br>
-
-    <input type="submit" value="Submit">
-</form>
-
-<div id="result"></div>
-</body>
-</html>
+  function selectOption(option) {
+    const currentQuestion = questions[questions.length - 1].id.charAt(1);
+    answers.push(option);
+    questions[questions.length - 1].style.display 
