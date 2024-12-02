@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>MBTI Test</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBTI Test</title>
+<script>
+function calculateMBTI() {
+    var iOrE = document.getElementById("iOrE").value;
+    var pOrJ = document.getElementById("pOrJ").value;
+    var sOrN = document.getElementById("sOrN").value;
+    var tOrF = document.getElementById("tOrF").value;
+
+    var mbtiType = iOrE + pOrJ + sOrN + tOrF;
+    var mbtiDescription = "";
+
+    // Simple MBTI description based on the type
+    switch (mbtiType) {
+        case "INTJ":
+            mbtiDescription = "The Scientist: Independent, original, and analytical.";
+            break;
+        case "INTP":
+            mbtiDescription = "The Thinker: Logical, analytical, and innovative.";
+            break;
+        case "ENTJ":
+            mbtiDescription = "The Director: Decisive, leadership, and assertive.";
+            break;
+        case "ENTP":
+            mbtiDescription = "The Visionary: Creative, innovative, and flexible.";
+            break;
+        // Add more cases for other types...
+        default:
+            mbtiDescription = "Unknown MBTI type.";
+    }
+
+    document.getElementById("result").innerHTML = "You are an " + mbtiType + " type: " + mbtiDescription;
+}
+</script>
 </head>
-
 <body>
-  <h1>MBTI Test</h1>
-  <form id="mbtiForm">
-    <label>
-      <input type="radio" name="i-e" value="i">I 人
-    </label>
-    <label>
-      <input type="radio" name="i-e" value="e">E 人
-    </label><br>
-    <label>
-      <input type="radio" name="p-j" value="p">P 人
-    </label>
-    <label>
-      <input type="radio" name="p-j" value="j">J 人
-    </label><br>
-    <label>
-      <input type="radio" name="s-n" value="s">S 人
-    </label>
-    <label>
-      <input type="radio" name="s-n" value="n">N 人
-    </label><br>
-    <label>
-      <input type="radio" name="t-f" value="t">T 人
-    </label>
-    <label>
-      <input type="radio" name="t-f" value="f">F 人
-    </label><br>
-    <input type="submit" value="Submit">
-  </form>
-  <div id="result"></div>
-  <script src="script.js"></script>
-</body>
+<h1>MBTI Test</h1>
+<form onsubmit="calculateMBTI(); return false;">
+    <p>Are you more of an I (Introverted) or E (Extraverted) person?</p>
+    <input type="radio" id="iOrE" name="iOrE" value="I">I<br>
+    <input type="radio" id="iOrE" name="iOrE" value="E">E<br>
 
+    <p>Do you prefer P (Perceiving) or J (Judging)?</p>
+    <input type="radio" id="pOrJ" name="pOrJ" value="P">P<br>
+    <input type="radio" id="pOrJ" name="pOrJ" value="J">J<br>
+
+    <p>Are you more S (Sensing) or N (Intuitive)?</p>
+    <input type="radio" id="sOrN" name="sOrN" value="S">S<br>
+    <input type="radio" id="sOrN" name="sOrN" value="N">N<br>
+
+    <p>Do you identify more with T (Thinking) or F (Feeling)?</p>
+    <input type="radio" id="tOrF" name="tOrF" value="T">T<br>
+    <input type="radio" id="tOrF" name="tOrF" value="F">F<br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<div id="result"></div>
+</body>
 </html>
