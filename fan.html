@@ -28,79 +28,17 @@
     background-size: cover;
     background-position: center;
     text-align: center;
+    padding: 20px; /* 增加内边距 */
   }
-  .yellow { background-image: linear-gradient(to right, #ffec64, #ffab00); }
-  .purple { background-image: linear-gradient(to right, #9c27b0, #d500f9); }
-  .red { background-image: linear-gradient(to right, #ff5252, #f48fb1); }
-  .black { background-image: linear-gradient(to right, #000000, #434343); color: white; }
+  .yellow { background-image: linear-gradient(to right, #fff59d, #ffea00); }
+  .purple { background-image: linear-gradient(to right, #ce93d8, #b388ff); }
+  .red { background-image: linear-gradient(to right, #ffcdd2, #ff8a80); }
+  .black { background-image: linear-gradient(to right, #212121, #424242); color: white; }
   .poem {
-    margin-top: 20px;
-    font-size: 1em;
+    font-size: 0.8em; /* 调整字体大小 */
     max-width: 80%;
-  }
-</style>
-</head>
-<body>
-
-<div id="page1" class="page yellow">
-  <div>第一页</div>
-  <div class="poem">
-    白日依山尽，黄河入海流。<br>
-    欲穷千里目，更上一层楼。<br>
-    ——王之涣《登鹳雀楼》
-  </div>
-</div>
-
-<div id="page2" class="page purple">
-  <div>第二页</div>
-  <div class="poem">
-    床前明月光，疑是地上霜。<br>
-    举头望明月，低头思故乡。<br>
-    ——李白《静夜思》
-  </div>
-</div>
-
-<div id="page3" class="page red">
-  <div>第三页</div>
-  <div class="poem"><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>翻页效果网页</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    font-family: 'Arial', sans-serif;
-  }
-  .page {
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2em;
-    transition: transform 0.5s ease;
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-  }
-  .yellow { background-image: linear-gradient(to right, #ffec64, #ffab00); }
-  .purple { background-image: linear-gradient(to right, #9c27b0, #d500f9); }
-  .red { background-image: linear-gradient(to right, #ff5252, #f48fb1); }
-  .black { background-image: linear-gradient(to right, #000000, #434343); color: white; }
-  .poem {
-    margin-top: 20px;
-    font-size: 1em;
-    max-width: 80%;
+    line-height: 1.6; /* 调整行高 */
+    color: rgba(255, 255, 255, 0.8); /* 调整字体颜色，使其更柔和 */
   }
 </style>
 </head>
