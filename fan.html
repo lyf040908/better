@@ -11,8 +11,6 @@
     padding: 0;
     overflow-x: hidden;
     font-family: 'Arial', sans-serif;
-    background-size: cover;
-    background-position: center;
   }
   .page {
     height: 100vh;
@@ -25,16 +23,17 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5em; /* 调整字体大小 */
+    font-size: 1.5em;
     transition: transform 0.5s ease;
-    padding: 20px; /* 增加内边距 */
+    padding: 20px;
+    background-blend-mode: multiply; /* 混合模式，使背景图与颜色渐变混合 */
   }
-  .yellow { background-image: linear-gradient(to right, #fff59d, #fff176); }
-  .purple { background-image: linear-gradient(to right, #ce93d8, #ba68c8); }
-  .red { background-image: linear-gradient(to right, #ffcdd2, #ffab91); }
-  .black { background-image: linear-gradient(to right, #212121, #303030); color: white; }
+  .yellow { background-image: linear-gradient(to right, rgba(255, 255, 0, 0.3), rgba(255, 255, 0, 0.1)), url('https://source.unsplash.com/1600x900/?nature'); }
+  .purple { background-image: linear-gradient(to right, rgba(156, 39, 176, 0.3), rgba(187, 0, 255, 0.1)), url('https://source.unsplash.com/1600x900/?city'); }
+  .red { background-image: linear-gradient(to right, rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.1)), url('https://source.unsplash.com/1600x900/?mountain'); }
+  .black { background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?water'); color: white; }
   .title {
-    font-size: 2em; /* 调整标题字体大小 */
+    font-size: 2em;
     margin-bottom: 20px;
   }
   .content {
@@ -42,19 +41,19 @@
     max-width: 80%;
   }
   .icon {
-    font-size: 1.5em; /* 调整图标大小 */
-    margin-bottom: 10px; /* 调整图标底部边距 */
+    font-size: 1.5em;
+    margin-bottom: 10px;
   }
   .poem {
-    font-size: 1em; /* 调整古诗字体大小 */
+    font-size: 1em;
     color: rgba(255, 255, 255, 0.8); /* 调整字体颜色，使其更柔和 */
   }
 </style>
 </head>
 <body>
 
-<div id="page1" class="page yellow" style="background-image: url('https://source.unsplash.com/1600x900/?nature');">
-  <div class="title">欢迎</div>
+<div id="page1" class="page yellow">
+  <div class="title">第一页</div>
   <i class="icon">🌼</i>
   <div class="content poem">
     白日依山尽，黄河入海流。<br>
@@ -63,7 +62,7 @@
   </div>
 </div>
 
-<div id="page2" class="page purple" style="background-image: url('https://source.unsplash.com/1600x900/?city');">
+<div id="page2" class="page purple">
   <div class="title">第二页</div>
   <i class="icon">🏙️</i>
   <div class="content poem">
@@ -73,7 +72,7 @@
   </div>
 </div>
 
-<div id="page3" class="page red" style="background-image: url('https://source.unsplash.com/1600x900/?mountain');">
+<div id="page3" class="page red">
   <div class="title">第三页</div>
   <i class="icon">⛰️</i>
   <div class="content poem">
@@ -83,7 +82,7 @@
   </div>
 </div>
 
-<div id="page4" class="page black" style="background-image: url('https://source.unsplash.com/1600x900/?water');">
+<div id="page4" class="page black">
   <div class="title">结束</div>
   <i class="icon">🌊</i>
   <div class="content poem">
