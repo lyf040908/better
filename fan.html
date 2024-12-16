@@ -10,7 +10,9 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center;
   }
   .page {
     height: 100vh;
@@ -19,24 +21,64 @@
     top: 0;
     left: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 4em;
+    font-size: 2em;
     transition: transform 0.5s ease;
   }
   .yellow { background-color: yellow; }
   .purple { background-color: purple; }
   .red { background-color: red; }
   .black { background-color: black; color: white; }
+  .title {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  .content {
+    text-align: center;
+    max-width: 80%;
+  }
+  .icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
 </style>
 </head>
 <body>
 
-<div id="page1" class="page yellow">第一页</div>
-<div id="page2" class="page purple">第二页</div>
-<div id="page3" class="page red">第三页</div>
-<div id="page4" class="page black">烦</div>
+<div id="page1" class="page yellow" style="background-image: url('https://source.unsplash.com/1600x900/?nature');">
+  <div class="title">欢迎</div>
+  <i class="icon">🌼</i>
+  <div class="content">
+    欢迎来到我们的演示。请滑动翻页。
+  </div>
+</div>
+
+<div id="page2" class="page purple" style="background-image: url('https://source.unsplash.com/1600x900/?city');">
+  <div class="title">第二页</div>
+  <i class="icon">🏙️</i>
+  <div class="content">
+    这是第二页。继续滑动了解更多。
+  </div>
+</div>
+
+<div id="page3" class="page red" style="background-image: url('https://source.unsplash.com/1600x900/?mountain');">
+  <div class="title">第三页</div>
+  <i class="icon">⛰️</i>
+  <div class="content">
+    这是第三页。你已经接近尾声了。
+  </div>
+</div>
+
+<div id="page4" class="page black" style="background-image: url('https://source.unsplash.com/1600x900/?water');">
+  <div class="title">结束</div>
+  <i class="icon">🌊</i>
+  <div class="content">
+    这是第四页，也是最后一页。感谢您的浏览。
+  </div>
+</div>
 
 <script>
   let currentPage = 0;
